@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+void displayClassInfoRubyM()
+{
+printf ("CIS 6 - Introduction to Programming (Using C)\n");
+printf ("Laney College\n");
+printf ("Ruby McBride\n\n");
+printf ("Information --\n");
+printf ("  Assignment:\t\t\t\tHW #5 Exercise #1\n");
+printf ("  Implemented by:\t\t\tRuby McBride\n");
+printf ("  Submitted Date:\t\t\t2021/04/01\n");
+printf ("  Current Number of LED available:\t2\n");
+printf ("  Allowed Number of LED Used:\t\t1\n");
+printf ("  Remaining Number of LED:\t\t1\n");
+}
+void displayUniqueDigitRubyM(int num);
+void displayClassInfoRubyM();
+int main()
+{
+int choice;
+displayClassInfoRubyM();
+while (1) {
+printf("\n************************************************************\n");
+printf("* Menu - HW #5                                             *\n");
+printf("* 1.Calling displayUniqueDigitRubyM()                      *\n");
+printf("* 2.Quit                                                   *\n");
+printf("************************************************************\n");
+printf("Enter an integer for option + Enter:");
+scanf("%d", &choice);
+switch (choice) {
+case 1: {
+int num;
+printf("Enter integer for option + ENTER:");
+scanf("%d", &num);
+printf("\nCalling displayAllDigitRubyM() --\n");
+displayUniqueDigitRubyM(num);
+continue;
+}
+case 2: {
+printf("Have Fun!\n");
+break;
+}
+default: {
+printf("** Wrong Option **\n");
+continue;
+}
+}
+break;
+}
+return 0;
+}
+void displayUniqueDigitRubyM(int num)
+{
+const int N = 9;
+int i, digit, count = 0;
+int freq[10] = { 0 };
+if (num != 0) {
+if (num > 0) {
+printf("%d is a positive and ", num);
+}
+else {
+printf("%d is a negative and ", num);
+if (num < 0) {
+num *= -1;
+}
+}
+if (num % 2 == 0) {
+printf("even value!\n");
+}
+else {
+printf("odd value!\n");
+}
+while (num > 0) {
+digit = num % 10;
+freq[digit]++;
+num /= 10;
+}
+for (i = 0; i <= N; i++) {
+if (freq[i] != 0) {
+count++;
+}
+}
+printf("There is/are %d unique digit(s).\n", count);
+for (i = 0; i <= N; i++) {
+if (freq[i] != 0)
+printf("\t%d seen %d time(s)\n", (i), freq[i]);
+}
+}
+else {
+printf("\nThe given value is ZERO!\n");
+}
+}
